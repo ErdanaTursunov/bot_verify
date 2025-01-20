@@ -1,14 +1,24 @@
 import TelegramBot from 'node-telegram-bot-api';
 import fetch from 'node-fetch';
 import FormData from 'form-data';
-import dotenv from 'dotenv'
-dotenv.config()
+import dotenv from 'dotenv';
+import express from 'express'; // Добавляем Express для работы с портом
+
+dotenv.config();
 
 const TOKEN = `${process.env.TELEGRAM_BOT_TOKEN}`;
 const bot = new TelegramBot(TOKEN, { polling: true });
 
 // Адрес твоего Express-сервера
 const serverUrl = `${process.env.SERVER_URL}/upload-pdf`;
+
+// Создаём сервер с использованием Express
+const app = express();
+const port = process.env.PORT || 3000; // Платформа Render будет назначать порт автоматически через process.env.PORT
+
+app.listen(port, () => {
+  console.log(`Сервер работает на порту ${port}`);
+});
 
 bot.on('message', async (msg) => {
   const chatId = msg.chat.id;
@@ -45,7 +55,7 @@ bot.on('message', async (msg) => {
           bot.sendMessage(chatId, `Пополнение саны: ${depositCount}\n` +
               `Адамдар: ${senders.join(', ')}\n` +
               `Адамдар саны: ${sendersCount}`);
-        return;
+          return;
       } catch (error) {
           bot.sendMessage(chatId, 'Произошла ошибка при обработке файла.');
           console.error('Ошибка при обработке файла:', error);
