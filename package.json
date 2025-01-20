@@ -4,8 +4,7 @@
   "description": "pdf bot kaspi",
   "main": "index.js",
   "scripts": {
-    "test": "nodemon index.js",
-    "start": "node bot.js"
+    "start": "nodemon index.js"
   },
   "author": "Erdana",
   "license": "ISC",
