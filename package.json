@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "pdf bot kaspi",
-  "main": "index.js",
+  "main": "bot.js",
   "scripts": {
     "start": "node bot.js"
   },
