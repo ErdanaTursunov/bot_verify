@@ -5,7 +5,6 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const TOKEN = `${process.env.TELEGRAM_BOT_TOKEN}`;
-console.log(TOKEN);
 const bot = new TelegramBot(TOKEN, { polling: true });
 
 // Адрес твоего Express-сервера
