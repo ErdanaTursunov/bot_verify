@@ -45,6 +45,7 @@ bot.on('message', async (msg) => {
           bot.sendMessage(chatId, `Пополнение саны: ${depositCount}\n` +
               `Адамдар: ${senders.join(', ')}\n` +
               `Адамдар саны: ${sendersCount}`);
+        return;
       } catch (error) {
           bot.sendMessage(chatId, 'Произошла ошибка при обработке файла.');
           console.error('Ошибка при обработке файла:', error);
